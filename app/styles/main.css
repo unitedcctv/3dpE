@@ -1,0 +1,28 @@
+/* Will be compiled down to a single stylesheet with your sass files */
+/* line 12, ../../app/styles/main.sass */
+input[type="number"] {
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 0px;
+  background: none;
+  margin: 0 0 0 0;
+  width: 30px;
+}
+
+/* line 16, ../../app/styles/main.sass */
+.centerContent {
+  /* Firefox */
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  /* Safari, Opera, and Chrome */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  /* W3C */
+  display: box;
+  box-pack: center;
+  box-align: center;
+}
