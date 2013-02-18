@@ -37,7 +37,7 @@ function moveFile( source_file, target_file ){
 	util.pump(is, os, function() {
 		fs.unlinkSync( source_file ); 
 		//we update the directory after the move...
-		runCommand( 'ls', '-tr1', 'gcode_uploads' );
+		runCommand( 'ls', '-tr1', 'gcode_files' );
 	});
 }
 
@@ -51,7 +51,7 @@ function parseFileUpload( req, res ){
 		showPrintPage( res ); 
 
 		var tempfile    = files['upload']['path'];
-		var targetfile  = 'gcode_uploads/'+files['upload']['name'];
+		var targetfile  = 'gcode_file/'+files['upload']['name'];
 		moveFile( tempfile, targetfile );
 
 		res.send({successMessage:'Thanks for the upload. saved file to:' + targetfile});
@@ -166,7 +166,7 @@ app.get('/retract', function(req, res){
 app.get('/printfile', function(req, res){
 	var lastfile = files[files.length-1].toString();
 	console.log('last file='+lastfile +"\n");
-	pronsole.stdin.write( 'load gcode_uploads/'+lastfile+"\n" );
+	pronsole.stdin.write( 'load gcode_file/'+lastfile+"\n" );
 	pronsole.stdin.write( 'print\n' );
 	showPrinterPage( req, res );
 });
@@ -177,7 +177,7 @@ app.get('/heatoff', function(req, res){
 });
 
 
-runCommand( 'ls', '-tr1', 'gcode_uploads' );
+runCommand( 'ls', '-tr1', 'gcode_fil' );
 
 setTimeout( function(){
 	pronsole.stdin.write('connect\n');
