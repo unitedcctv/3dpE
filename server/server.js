@@ -11,17 +11,16 @@ app.configure(function(){
 	app.use(express.cookieParser());
 	app.use(express.session({ secret: "appsession" }));
 	app.use(express.errorHandler({showStack: true, dumpExceptions: true}));
-	  //app.use(app.router);
-	  app.use('/styles/', express.static(__dirname + '/../app/styles/'));
-	  app.use('/images/', express.static(__dirname + '/../app/images/'));
-	  app.use('/scripts/', express.static(__dirname + '/../app/scripts/'));
-	  app.set('views', __dirname + '/../app/views');
-	  console.log(__dirname)
-	  //app.set('view engine', 'hbs');
-	});
+	//app.use(app.router);
+	app.use('/styles/', express.static(__dirname + '/../app/stylesheets/'));
+	app.use('/images/', express.static(__dirname + '/../app/images/'));
+	app.use('/scripts/', express.static(__dirname + '/../app/scripts/'));
+	app.set('views', __dirname + '/../app/views');
+});
 
 var util = require('util');   
 var fs = require('fs'); //moving files
+var formidable = require('formidable');
 var command_output = ''; //this will contain output of commands that we're run with runCommand function...
 var files = []; //array of files uploaded
 
@@ -97,15 +96,14 @@ app.get('/', function(req,res) {
 	}
 });
 
-app.get('/upload/', function(req, res){
-	res.render('mobile/direct_control', { fileName : '3dpE stretchy_band.stl' });
+app.post('/upload/', function(req, res){
 
-	// console.log("got upload");
-	// if(req.method.toLowerCase() == 'post')
-	// {
-	// 	console.log("this is post")
-	// 	parseFileUpload( req, res );
-	// }
+	console.log("got upload");
+	if(req.method.toLowerCase() == 'post')
+	{
+		console.log("this is post")
+		parseFileUpload( req, res );
+	}
 });
 
 app.get('/moveleft/:amount', function(req, res){
