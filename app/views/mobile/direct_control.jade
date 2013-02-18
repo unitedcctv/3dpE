@@ -1,27 +1,24 @@
-extends index
-
-block content
-  html
-    body
-      a(href='#', data-role='button', data-icon='star', data-corners="false") Home All
-      div(data-role='collapsible', data-corners="false")
-        h3 Move X
-        input#slider-X.slider(type='range', name='slider-X', value='0', min='-50', max='50')
-        .centerContent
-          div(data-role='controlgroup', data-type='horizontal')
-            div(onClick='/moveleft/50', data-role='button', data-inline='true', data-icon='arrow-r') Move X
-            div(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home X
-      div(data-role='collapsible')
-        h3 Move Y
-        input#slider-X(type='range', name='slider-X', value='0', min='-50', max='50')
-        .centerContent
-          div(data-role='controlgroup', data-type='horizontal')
-            a(href='#', data-role='button', data-inline='true', data-icon='arrow-r') Move Y
-            a(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home Y
-      div(data-role='collapsible')
-        h3 Move Z
-        input#slider-X(type='range', name='slider-X', value='0', min='-50', max='50')
-        .centerContent
-          div(data-role='controlgroup', data-type='horizontal')
-            a(href='#', data-role='button', data-inline='true', data-icon='arrow-r') Move Z
-            a(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home Z
+html
+	include main_menu
+	a(href='#', data-role='button', data-icon='star', data-corners="false") Home All
+	div(data-role='collapsible', data-corners="false")
+		h3 Move X
+		input#slider-X.slider(type='range', name='slider-X', value='0', min='-50', max='50')
+		.centerContent
+		div(data-role='controlgroup', data-type='horizontal')
+		div(onClick='/moveleft/50', data-role='button', data-inline='true', data-icon='arrow-r') Move X
+		div(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home X
+	div(data-role='collapsible')
+		h3 Move Y
+		input#slider-X(type='range', name='slider-X', value='0', min='-50', max='50')
+		.centerContent
+		div(data-role='controlgroup', data-type='horizontal')
+			a(href='#', data-role='button', data-inline='true', data-icon='arrow-r') Move Y
+			a(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home Y
+	div(data-role='collapsible')
+		h3 Move Z
+		input#slider-X(type='range', name='slider-X', value='0', min='-50', max='50')
+		.centerContent
+		div(data-role='controlgroup', data-type='horizontal')
+			a(href='#', data-role='button', data-inline='true', data-icon='arrow-r') Move Z
+			a(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home Z

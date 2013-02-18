@@ -44,6 +44,7 @@ function moveFile( source_file, target_file ){
 //needs both request and response vars (request to get file data, response to show results...)
 function parseFileUpload( req, res ){
 	// parse a file upload
+	console.log("parsing file");
 	var form = new formidable.IncomingForm();
 	form.parse(req, function(err, fields, files) {
 
@@ -96,27 +97,15 @@ app.get('/', function(req,res) {
 	}
 });
 
-app.get('/home/', function(req, res){
-	res.render('mobile/home', { fileName : '3dpE stretchy_band.stl' });
-});
-
-app.get('/direct_control/', function(req, res){
+app.get('/upload/', function(req, res){
 	res.render('mobile/direct_control', { fileName : '3dpE stretchy_band.stl' });
-});
 
-app.get('/upload', function(req, res){
-	if(req.method.toLowerCase() == 'post')
-	{
-		parseFileUpload( req, res );
-	}
-});
-
-app.get('/files', function(req, res){
-	showFilesWidget( req, res );
-});
-
-app.get('/printer', function(req, res){
-	showPrinterPage( req, res );
+	// console.log("got upload");
+	// if(req.method.toLowerCase() == 'post')
+	// {
+	// 	console.log("this is post")
+	// 	parseFileUpload( req, res );
+	// }
 });
 
 app.get('/moveleft/:amount', function(req, res){

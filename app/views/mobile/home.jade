@@ -1,46 +1,13 @@
-extends index
-
-
-block content
-  html
-    body
-      div(data-role='collapsible')
-        h3 Load file
-        ul(data-role='listview')
-          li
-            a(href='#')
-              img(src='../images/stretchy_band.png')
-              h3 stretchy_band.stl
-          li
-            a(href='#')
-              img(src='../images/toad.png')
-              h3 toad_Cut_2.stl
-          li
-            a(href='#')
-              img(src='../images/springy_thing.png')
-              h3 springy_thing.stl
-          li
-            a(href='#sketch_1')
-              img(src='../images/PHK_Clip.png')
-              h3 PHK_Clip.stl
-      div(data-role='collapsible', data-icon='check')
-        h3 Print
-        div(data-role='content', onclick='playPausePrintVideo()')
-          .centerContent
-            video#printVideo(width='320', height='180')
-              source(src='/videos/test.mp4', type='video/mp4')
-          .ui-grid-d
-            h3.ui-block-a
-            h3.ui-block-b ETemp
-            h3#tCounter.ui-block-c 190
-            h3#tTarget.ui-block-d  200
-            h3.ui-block-e
-          .ui-grid-d
-            h3.ui-block-a
-            h3.ui-block-b BTemp
-            h3#bCounter.ui-block-c 60
-            h3#bTarget.ui-block-d
-            h3.ui-block-e
-          a(href='#sketch_0', data-transition='slide', data-role='button', data-icon='gear') Pause
-          a(href='#sketch_0', data-transition='slide', data-role='button', data-icon='delete') Cancel
-        // /content
+html
+	include main_menu
+	div(data-role='collapsible')
+		h3 Load file
+		form(action='/upload/', enctype='multipart/form-data', method='post')
+			input(type='file', name='upload')
+			input(type='submit', value='Upload')
+		a(href='/upload/', data-role='button') upload
+	div(data-role='collapsible', data-icon='check')
+		h3 Print
+		div(data-role='content', onclick='playPausePrintVideo()')
+			a(href='#sketch_0', data-transition='slide', data-role='button', data-icon='gear') Pause
+			a(href='#sketch_0', data-transition='slide', data-role='button', data-icon='delete') Cancel
