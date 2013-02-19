@@ -106,32 +106,25 @@ app.post('/upload/', function(req, res){
 	}
 });
 
-app.get('/moveleft/:amount', function(req, res){
+app.get('/printfile', function(req, res){
+	var lastfile = files[files.length-1].toString();
+	console.log('last file='+lastfile +"\n");
+	pronsole.stdin.write( 'load gcode_file/'+lastfile+"\n" );
+	pronsole.stdin.write( 'print\n' );
+	showPrinterPage( req, res );
+});
+
+app.get('/movex/:amount', function(req, res){
 	pronsole.stdin.write('move x ' + req.param('amount') + '\n');
 	console.log("move left " + req.param('amount'));
 });
 
-app.get('/moveright', function(req, res){
-	pronsole.stdin.write('move x ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
-});
-
-app.get('/moveup', function(req, res){
+app.get('/movez', function(req, res){
 	pronsole.stdin.write('move z ' + req.param('amount') + '\n');
 	showPrinterPage( req, res );
 });
 
-app.get('/movedown', function(req, res){
-	pronsole.stdin.write('move z ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
-});
-
-app.get('/moveback', function(req, res){
-	pronsole.stdin.write('move y ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
-});
-
-app.get('/moveforward', function(req, res){
+app.get('/movey', function(req, res){
 	pronsole.stdin.write('move y ' + req.param('amount') + '\n');
 	showPrinterPage( req, res );
 });
@@ -158,14 +151,6 @@ app.get('/extrude', function(req, res){
 
 app.get('/retract', function(req, res){
 	pronsole.stdin.write('extrude ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
-});
-
-app.get('/printfile', function(req, res){
-	var lastfile = files[files.length-1].toString();
-	console.log('last file='+lastfile +"\n");
-	pronsole.stdin.write( 'load gcode_file/'+lastfile+"\n" );
-	pronsole.stdin.write( 'print\n' );
 	showPrinterPage( req, res );
 });
 
