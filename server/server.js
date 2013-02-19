@@ -42,8 +42,6 @@ function moveFile( source_file, target_file ){
 
 //needs both request and response vars (request to get file data, response to show results...)
 function parseFileUpload( req, res ){
-	// parse a file upload
-	console.log("parsing file");
 	var form = new formidable.IncomingForm();
 	form.parse(req, function(err, fields, files) {
 
@@ -59,7 +57,6 @@ function parseFileUpload( req, res ){
 }
 
 function runCommand( command, args, dir ){
-  //var spawn   = require('child_process').spawn;
   var command = spawn(command, [args, dir]);
 
   command_output = '';
@@ -97,11 +94,8 @@ app.get('/', function(req,res) {
 });
 
 app.post('/upload/', function(req, res){
-
-	console.log("got upload");
 	if(req.method.toLowerCase() == 'post')
 	{
-		console.log("this is post")
 		parseFileUpload( req, res );
 	}
 });
@@ -111,7 +105,7 @@ app.get('/printfile', function(req, res){
 	console.log('last file='+lastfile +"\n");
 	pronsole.stdin.write( 'load gcode_file/'+lastfile+"\n" );
 	pronsole.stdin.write( 'print\n' );
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/movex/:amount', function(req, res){
@@ -121,42 +115,42 @@ app.get('/movex/:amount', function(req, res){
 
 app.get('/movez', function(req, res){
 	pronsole.stdin.write('move z ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/movey', function(req, res){
 	pronsole.stdin.write('move y ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/homexy', function(req, res){
 	pronsole.stdin.write('home xy\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/homez', function(req, res){
 	pronsole.stdin.write('home z\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/heaton', function(req, res){
 	pronsole.stdin.write('settemp ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/extrude', function(req, res){
 	pronsole.stdin.write('extrude ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/retract', function(req, res){
 	pronsole.stdin.write('extrude ' + req.param('amount') + '\n');
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 app.get('/heatoff', function(req, res){
 	pronsole.stdin.write( 'settemp 0\n' );
-	showPrinterPage( req, res );
+	updatePage( req, res );
 });
 
 
