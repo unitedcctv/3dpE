@@ -2,9 +2,6 @@ html
 	include main_menu
 	div(data-role='collapsible')
 		h3 Load file
-		form(action='/upload/', enctype='multipart/form-data', method='post')
-			input(type='file', name='upload')
-			input(type='submit', value='Upload')
 	div(data-role='collapsible', data-icon='check')
 		h3 Print
 		div(data-role='content', onclick='playPausePrintVideo()')

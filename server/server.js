@@ -30,6 +30,7 @@ var spawn    = require('child_process').spawn;
 var pronsole = spawn('python', ['printrun/pronsole.py','']);
 
 function moveFile( source_file, target_file ){
+	console.log("moving file")
 	var is = fs.createReadStream(source_file)
 	var os = fs.createWriteStream(target_file);
 
@@ -42,13 +43,15 @@ function moveFile( source_file, target_file ){
 
 //needs both request and response vars (request to get file data, response to show results...)
 function parseFileUpload( req, res ){
+	console.log("parsing file upload")
 	var form = new formidable.IncomingForm();
+
 	form.parse(req, function(err, fields, files) {
 
 		showPrintPage( res ); 
 
 		var tempfile    = files['upload']['path'];
-		var targetfile  = 'gcode_file/'+files['upload']['name'];
+		var targetfile  = 'files/'+files['upload']['name'];
 		moveFile( tempfile, targetfile );
 
 		res.send({successMessage:'Thanks for the upload. saved file to:' + targetfile});
