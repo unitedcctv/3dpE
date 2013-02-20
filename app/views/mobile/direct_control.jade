@@ -1,24 +1,24 @@
 html
 	include main_menu
-	a(href='#', data-role='button', data-icon='star', data-corners="false") Home All
+	button(data-icon='star', data-corners="false", value="Home All", id="homexyz") Home All
 	div(data-role='collapsible', data-corners="false")
 		h3 Move X
-		input#slider-X.slider(type='range', name='slider-X', value='0', min='-50', max='50')
+		input#slider-X.slider(type='range', id='sliderx', value='0', min='-50', max='50')
 		.centerContent
 		div(data-role='controlgroup', data-type='horizontal')
-		div(onClick='/moveleft/50', data-role='button', data-inline='true', data-icon='arrow-r') Move X
-		div(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home X
+			button(class="moveControl", data-inline='true', data-icon='arrow-r', value="Move X", id="movex")
+			button(class="homeControl", data-align='right', data-inline='true', data-icon='home' , value="Home X", id="homex")
 	div(data-role='collapsible')
 		h3 Move Y
-		input#slider-X(type='range', name='slider-X', value='0', min='-50', max='50')
+		input#slider-X(type='range', id='slidery', value='0', min='-50', max='50')
 		.centerContent
 		div(data-role='controlgroup', data-type='horizontal')
-			a(href='#', data-role='button', data-inline='true', data-icon='arrow-r') Move Y
-			a(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home Y
+			button(class="moveControl", data-inline='true', data-icon='arrow-r', value="Move Y", id="movey")
+			button(class="homeControl", data-align='right', data-inline='true', data-icon='home', value="Home Y", id="homey")
 	div(data-role='collapsible')
 		h3 Move Z
-		input#slider-X(type='range', name='slider-X', value='0', min='-50', max='50')
+		input#slider-X(type='range', id='sliderz', value='0', min='-50', max='50')
 		.centerContent
 		div(data-role='controlgroup', data-type='horizontal')
-			a(href='#', data-role='button', data-inline='true', data-icon='arrow-r') Move Z
-			a(href='#', data-role='button', data-align='right', data-inline='true', data-icon='home') Home Z
+			button(class="moveControl", data-inline='true', data-icon='arrow-r', value="Move Z", id="movez")
+			button(class="homeControl", data-align='right', data-inline='true', data-icon='home', value="Home Z", id="homez")

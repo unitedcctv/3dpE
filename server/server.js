@@ -126,14 +126,24 @@ app.get('/movey', function(req, res){
 	updatePage( req, res );
 });
 
-app.get('/homexy', function(req, res){
-	pronsole.stdin.write('home xy\n');
-	updatePage( req, res );
+app.get('/homex', function(req, res){
+	pronsole.stdin.write('home x\n');
+	res.send("sending x home");
+});
+
+app.get('/homey', function(req, res){
+	pronsole.stdin.write('home y\n');
+	res.send("sending y home");
 });
 
 app.get('/homez', function(req, res){
 	pronsole.stdin.write('home z\n');
-	updatePage( req, res );
+	res.send("sending z home");
+});
+
+app.get('/homexyz', function(req, res){
+	//pronsole.stdin.write('home z\n');
+	res.send("sending xyz home");
 });
 
 app.get('/heaton', function(req, res){
