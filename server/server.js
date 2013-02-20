@@ -111,39 +111,39 @@ app.get('/printfile', function(req, res){
 	updatePage( req, res );
 });
 
-app.get('/movex/:amount', function(req, res){
+app.get('/movex', function(req, res){
 	pronsole.stdin.write('move x ' + req.param('amount') + '\n');
-	console.log("move left " + req.param('amount'));
+	res.send({message:"sending x " + req.param('amount'), amount:req.param('amount')});
 });
 
-app.get('/movez', function(req, res){
+app.get('/movez/:amount', function(req, res){
 	pronsole.stdin.write('move z ' + req.param('amount') + '\n');
-	updatePage( req, res );
+	res.send({message:"sending z " + req.param('amount'), amount:amount});
 });
 
-app.get('/movey', function(req, res){
+app.get('/movey/:amount', function(req, res){
 	pronsole.stdin.write('move y ' + req.param('amount') + '\n');
-	updatePage( req, res );
+	res.send({message:"sending y " + req.param('amount'), amount:amount});
 });
 
 app.get('/homex', function(req, res){
 	pronsole.stdin.write('home x\n');
-	res.send("sending x home");
+	res.send({message:"sending x home"});
 });
 
 app.get('/homey', function(req, res){
 	pronsole.stdin.write('home y\n');
-	res.send("sending y home");
+	res.send({message:"sending y home"});
 });
 
 app.get('/homez', function(req, res){
 	pronsole.stdin.write('home z\n');
-	res.send("sending z home");
+	res.send({message:"sending z home"});
 });
 
 app.get('/homexyz', function(req, res){
 	//pronsole.stdin.write('home z\n');
-	res.send("sending xyz home");
+	res.send({message:"sending xyz home"});
 });
 
 app.get('/heaton', function(req, res){
